@@ -51,11 +51,34 @@
     <%= favicon_link_tag "favicon.ico" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/bfa19ffe9b.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <main class="">
+    <main class="bg-gray-50">
       <%= yield %>
     </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadingBar = document.getElementById('loading-bar');
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 5;
+        loadingBar.style.width = `${progress}%`;
+
+        if (progress >= 100) {
+          clearInterval(interval);
+        }
+      }, 200);
+
+      setTimeout(function() {
+        document.querySelector('#splash_screen').classList.add('hidden');
+        document.querySelector('#landing_page').classList.remove('hidden');
+      }, 2000);
+    });
+  </script>
+
+
   </body>
 </html>

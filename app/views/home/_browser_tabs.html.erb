@@ -1,0 +1,35 @@
+<div data-controller='tabs' class="text-white">
+  <ul data-tabs-target="tabs" class="flex text-sm bg-black/50 rounded">
+    <li class="p-4 cursor-pointer flex items-center gap-3">
+      <div class="h-2 w-2 bg-red-500 rounded-full"></div>
+      <div class="h-2 w-2 bg-yellow-500 rounded-full"></div>
+      <div class="h-2 w-2 bg-green-500 rounded-full"></div>
+    </li>
+    <% tabs.each do |tab| %>
+      <li class="p-4 cursor-pointer text-sm  <%= tab[:active] ? 'bg-secondary rounded-t-lg' : 'hover:bg-secondary/20' %>" id="<%= tab[:id] %>">
+        <%= tab[:label] %>
+        <i class="fas fa-times ml-2" onclick="removeTab('<%= tab[:id] %>')"></i>
+      </li>
+    <% end %>
+  </ul>
+
+  <% tabs.each do |tab| %>
+    <div data-tabs-target="panels" class="p-4">
+      <% if tab[:partial] %>
+        <%= render partial: tab[:partial] %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  function removeTab(id) {
+    const tab = document.getElementById(id);
+    if ( id == 'funtivities') {
+      console.log('Cannot remove the funtivities tab');
+    } else {
+      tab.remove();
+    }
+  }
+</script>
+

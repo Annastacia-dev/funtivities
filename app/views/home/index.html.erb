@@ -1,8 +1,15 @@
-<div class="w-screen min-h-screen flex flex-col justify-center items-center overflow-hidden bg-primary">
-  <div class="h-[500px] w-[500px] rounded-full absolute -top-10 -left-40 border-t-0 bg-black/10"></div>
+<div class="min-h-screen flex flex-col justify-center items-center overflow-hidden bg-primary" id="splash_screen">
+  <div class="h-[500px] w-[500px] rounded-full absolute -top-10 -left-40 border-t-0 bg-black/10 animate-bounce"></div>
   <%= image_tag "logo.png", class: "" %>
   <p class="text-center mt-1 text-4xl text-secondary font-bagel tracking-wide">
     funtivities.
   </p>
+  <div class="w-1/4 h-1 bg-primary rounded mt-5">
+    <div class="h-full bg-secondary rounded" id="loading-bar"></div>
+  </div>
+</div>
+
+<div class="hidden relative" id="landing_page">
+ <%= render "landing_page" %>
 </div>
 
