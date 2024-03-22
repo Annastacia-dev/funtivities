@@ -5,12 +5,21 @@
       <div class="h-2 w-2 bg-yellow-500 rounded-full"></div>
       <div class="h-2 w-2 bg-green-500 rounded-full"></div>
     </li>
-    <% tabs.each do |tab| %>
-      <li class="p-4 cursor-pointer text-sm  <%= tab[:active] ? 'bg-secondary rounded-t-lg' : 'hover:bg-secondary/20' %>" id="<%= tab[:id] %>">
-        <%= tab[:label] %>
-        <i class="fas fa-times ml-2" onclick="removeTab('<%= tab[:id] %>')"></i>
-      </li>
-    <% end %>
+    <div class="md:flex hidden">
+      <% tabs.each do |tab| %>
+        <li class="p-4 cursor-pointer text-sm  <%= tab[:active] ? 'bg-secondary rounded-t-lg' : 'hover:bg-secondary/20' %>" id="<%= tab[:id] %>">
+          <%= tab[:label] %>
+          <% if tab[:id] != 'funtivities' %>
+            <i class="fas fa-times ml-2" onclick="removeTab('<%= tab[:id] %>')"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </div>
+    <div class="md:hidden flex justify-end">
+      <li class="p-4 cursor-pointer text-sm bg-secondary rounded-t-lg" id="<%= tabs.last[:id] %>">
+      <%= tabs.last[:label] %>
+    </li>
+  </li>
   </ul>
 
   <% tabs.each do |tab| %>
