@@ -9,6 +9,5 @@ class HomeController < ApplicationController
 
   def get_user_location
     @user_location = request.location
-    byebug
   end
 end
