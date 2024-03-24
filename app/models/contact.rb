@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: contacts
+#
+#  id               :uuid             not null, primary key
+#  contactable_type :string           not null
+#  email            :string           not null
+#  first_name       :string           not null
+#  last_name        :string           not null
+#  middle_name      :string
+#  phone_1          :string           not null
+#  phone_2          :string
+#  slug             :string
+#  status           :integer          default(0)
+#  title            :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  contactable_id   :bigint           not null
+#  user_id          :uuid
+#
+# Indexes
+#
+#  index_contacts_on_contactable  (contactable_type,contactable_id)
+#  index_contacts_on_user_id      (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
+class Contact < ApplicationRecord
+end
