@@ -17,7 +17,7 @@
 #  room_number      :string
 #  slug             :string
 #  state            :string
-#  status           :integer          default(0)
+#  status           :integer          default("inactive")
 #  street           :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null

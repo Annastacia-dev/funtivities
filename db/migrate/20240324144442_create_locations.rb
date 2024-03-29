@@ -16,7 +16,7 @@ class CreateLocations < ActiveRecord::Migration[7.1]
       t.decimal :longitude, precision: 10, scale: 6
       t.string :slug
       t.integer :status, default: 0
-      t.references :locatable, polymorphic: true, null: false
+      t.references :locatable, polymorphic: true, null: false, type: :uuid
 
       t.timestamps
     end

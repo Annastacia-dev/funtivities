@@ -5,10 +5,11 @@
 #  id             :uuid             not null, primary key
 #  description    :text
 #  end_date       :datetime
-#  event_type     :integer          default(0)
+#  event_category :integer          default("arts & crafts")
+#  event_status   :integer          default("active")
 #  slug           :string
 #  start_date     :datetime
-#  status         :integer          default(0)
+#  status         :integer          default("draft")
 #  title          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

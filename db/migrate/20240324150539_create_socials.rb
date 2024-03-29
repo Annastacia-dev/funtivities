@@ -12,7 +12,7 @@ class CreateSocials < ActiveRecord::Migration[7.1]
       t.string :whatsapp
       t.string :telegram
       t.string :website
-      t.references :socialable, polymorphic: true, null: false
+      t.references :socialable, polymorphic: true, null: false, type: :uuid
 
       t.timestamps
     end

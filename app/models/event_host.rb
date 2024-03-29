@@ -1,2 +1,0 @@
-class EventHost < ApplicationRecord
-end
