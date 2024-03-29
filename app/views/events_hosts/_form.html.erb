@@ -1,0 +1,36 @@
+<%= form_with(model: events_host, local: true, html: { class: 'grid sm:grid-cols-2 grid-cols-1 gap-5 mt-3 text-sm' }) do |form| %>
+
+  <div class='flex flex-col gap-2'>
+    <div class="sm:grid sm:grid-cols-2 flex flex-col gap-6">
+      <div class="flex flex-col gap-1 relative">
+      <%= form.label :name, class: 'text-sm font-bold ml-1' %>
+        <%= form.text_field :name, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g ""The social house"', required: true %>
+      </div>
+
+      <div class="flex flex-col gap-1 relative">
+        <%= form.label :email, class: 'text-sm font-bold ml-1' %>
+        <%= form.email_field :email, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "thesocial@house.ke"', required: true %>
+      </div>
+
+      <div class="flex flex-col gap-1 relative">
+        <%= form.label :phone, class: 'text-sm font-bold ml-1' %>
+        <%= form.text_field :phone, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "0712345678"', required: true %>
+      </div>
+
+      <div class="flex flex-col gap-1 relative">
+        <%= form.label :logo, class: 'text-sm font-bold ml-1' %>
+        <%= form.file_field :logo, class: "border-none bg-gray-500/20 outline-none focus:outline-none  file:mr-4 block file:bg-gray-500/20 file:text-white file:outline-none file:border-none file:py-3 rounded-lg", accept: "image/*", required: true %>
+      </div>
+
+      <div class="flex flex-col gap-1 relative col-span-2">
+        <%= form.label :description, class: 'text-sm font-bold ml-1' %>
+        <%= form.text_area :description, rows: 5, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "We host the best events from paint & sip to karaoke nights and more."', required: true %>
+      </div>
+    </div>
+
+    <div class="flex justify-start mt-5">
+      <%= form.submit 'create account', class: 'px-6 py-3 bg-secondary text-white rounded-lg hover:bg-primary font-bold cursor-pointer' %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,19 @@
+<div class="text-white min-h-screen bg-image bg-cover bg-fixed bg-center bg-no-repeat relative" style="background-image: url(<%= @background_image %> )">
+
+  <div class="min-h-screen bg-gradient-to-r from-black to-black/90 px-10 py-6 ">
+    <%= render 'components/navigation' %>
+
+    <div class="flex flex-col gap-5 mt-10">
+      <h1 class="text-xl font-black font-montserrat">
+       create events host account.
+      </h1>
+      <hr class="w-20 border-b-2 border-secondary">
+      <div class="sm:w-1/2">
+        <%= render 'components/errors', object: @events_host %>
+      </div>
+      <%= render 'form', events_host: @events_host %>
+    </div>
+  </div>
+
+
+</div>

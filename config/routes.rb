@@ -9,4 +9,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
   get '/manifest.json', to: 'home#manifest'
+
+  resources :events
+
+  resources :events_hosts do
+    member { get :confirmation_message}
+    member { get :confirm}
+    member { get :create_admin_user}
+  end
+
+  resources :locations
+  resources :contacts
+  resources :socials
 end

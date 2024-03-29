@@ -17,6 +17,7 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
         'bagel': ['Bagel Fat One', 'cursive'],
         'balsamiq': ['Balsamiq Sans', 'cursive'],
+        'montserrat': ['Montserrat', 'sans-serif'],
       },
     },
   },

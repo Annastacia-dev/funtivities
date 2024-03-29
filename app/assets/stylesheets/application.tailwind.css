@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Balsamiq+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Balsamiq+Sans&family=Montserrat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +7,10 @@
 
 
 @layer components {
+  html {
+    scroll-behavior: smooth;
+    @apply font-montserrat font-light;
+  }
 }
 
 

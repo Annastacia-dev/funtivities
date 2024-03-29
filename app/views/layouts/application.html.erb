@@ -32,11 +32,6 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="funtivities">
     <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="en_GB">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="es_ES">
-    <meta property="og:locale:alternate" content="de_DE">
-    <meta property="og:locale:alternate" content="it_IT">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@funtivities">
@@ -57,27 +52,73 @@
   </head>
 
   <body>
-    <main class="bg-gray-50">
+    <main class="relative">
+      <% unless flash.empty? %>
+        <div id="flash" class="text-white sm:pl-20 absolute top-0 right-40 z-50 w-[50%]shadow-lg rounded">
+          <% flash.keys.each do |k| %>
+            <div class="sm:px-20 px-3 py-6 flex justify-center items-center gap-4 border-l-4 text-sm relative <%= notification_class(k) %>">
+              <div id="progress-bar" class="h-1 absolute top-0 left-0 <%= progress_bar_background(k) %>">
+              </div>
+              <i class="<%= notification_icon(k) %> text-xl"></i>
+              <%= flash[k] %>
+              <div class="cursor-pointer" onclick="document.getElementById('flash').classList.add('hidden')">
+                <i class="fa-solid fa-square-xmark text-xl"></i>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
 
     <script>
     document.addEventListener("turbo:load", () => {
       const loadingBar = document.getElementById('loading-bar');
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += 5;
-        loadingBar.style.width = `${progress}%`;
+      const flash = document.getElementById('flash');
+      const progressBar = document.getElementById('progress-bar');
 
-        if (progress >= 100) {
-          clearInterval(interval);
+      if (loadingBar){
+        let loadingProgress = 0;
+        const interval = setInterval(() => {
+          loadingProgress += 5;
+          loadingBar.style.width = `${loadingProgress}%`;
+
+          if (loadingProgress >= 100) {
+            clearInterval(interval);
+          }
+        }, 200);
+
+        setTimeout(function() {
+          document.querySelector('#splash_screen').classList.add('hidden');
+          document.querySelector('#landing_page').classList.remove('hidden');
+        }, 2000);
+      }
+
+      let progress = 100;
+      let intervalId;
+
+      if (flash) {
+        intervalId = setInterval(() => {
+          progress -= 1;
+          progressBar.style.width = `${progress}%`;
+
+          if (progress <= 0) {
+            clearInterval(intervalId);
+            flash.classList.add('hidden');
+          }
+        }, 50);
+      }
+
+      function closeFlash() {
+        const flash = document.getElementById('flash');
+        if (flash) {
+          clearInterval(intervalId);
+          flash.classList.add('hidden');
         }
-      }, 200);
+      }
 
-      setTimeout(function() {
-        document.querySelector('#splash_screen').classList.add('hidden');
-        document.querySelector('#landing_page').classList.remove('hidden');
-      }, 2000);
+
     });
   </script>
 

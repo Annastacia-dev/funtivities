@@ -1,0 +1,10 @@
+<div class="container">
+  <h3>Welcome <b><%= @host&.name %></b>,</h3>
+
+  <p>You can confirm your account email through the link below:</p>
+
+  <%= link_to 'Confirm my account', confirm_events_host_url(@host, token: @host&.confirmation_token) %>
+
+</div>
+
+

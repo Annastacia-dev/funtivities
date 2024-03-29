@@ -1,0 +1,19 @@
+
+<div class="flex justify-between">
+  <%= link_to root_path, class: 'flex items-center  gap-2' do %>
+    <%= image_tag "logo.png", alt: "foodmenu", class: "sm:h-8 h-4 sm:w-8 w-4" %>
+    <h1 class="sm:text-xl text-base font-bagel tracking-wide text-secondary">funtivities</h1>
+  <% end %>
+
+  <div class="flex gap-5">
+    <%= link_to root_path, class: 'flex items-center gap-2' do %>
+      <span class="capitalize underline font-semibold">home</span>
+    <% end %>
+
+    <%= link_to new_user_session_path, class: 'flex items-center gap-2' do %>
+      <span class="capitalize underline font-semibold">login</span>
+    <% end %>
+  </div>
+
+  <div></div>
+</div>
