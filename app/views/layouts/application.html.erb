@@ -73,55 +73,53 @@
     </main>
 
     <script>
-    document.addEventListener("turbo:load", () => {
-      const loadingBar = document.getElementById('loading-bar');
-      const flash = document.getElementById('flash');
-      const progressBar = document.getElementById('progress-bar');
+      document.addEventListener("turbo:load", () => {
+        const loadingBar = document.getElementById('loading-bar');
+        const flash = document.getElementById('flash');
+        const progressBar = document.getElementById('progress-bar');
 
-      if (loadingBar){
-        let loadingProgress = 0;
-        const interval = setInterval(() => {
-          loadingProgress += 5;
-          loadingBar.style.width = `${loadingProgress}%`;
+        if (loadingBar){
+          let loadingProgress = 0;
+          const interval = setInterval(() => {
+            loadingProgress += 5;
+            loadingBar.style.width = `${loadingProgress}%`;
 
-          if (loadingProgress >= 100) {
-            clearInterval(interval);
-          }
-        }, 200);
+            if (loadingProgress >= 100) {
+              clearInterval(interval);
+            }
+          }, 200);
 
-        setTimeout(function() {
-          document.querySelector('#splash_screen').classList.add('hidden');
-          document.querySelector('#landing_page').classList.remove('hidden');
-        }, 2000);
-      }
+          setTimeout(function() {
+            document.querySelector('#splash_screen').classList.add('hidden');
+            document.querySelector('#landing_page').classList.remove('hidden');
+          }, 2000);
+        }
 
-      let progress = 100;
-      let intervalId;
+        let progress = 100;
+        let intervalId;
 
-      if (flash) {
-        intervalId = setInterval(() => {
-          progress -= 1;
-          progressBar.style.width = `${progress}%`;
+        if (flash) {
+          intervalId = setInterval(() => {
+            progress -= 1;
+            progressBar.style.width = `${progress}%`;
 
-          if (progress <= 0) {
+            if (progress <= 0) {
+              clearInterval(intervalId);
+              flash.classList.add('hidden');
+            }
+          }, 50);
+        }
+
+        function closeFlash() {
+          const flash = document.getElementById('flash');
+          if (flash) {
             clearInterval(intervalId);
             flash.classList.add('hidden');
           }
-        }, 50);
-      }
-
-      function closeFlash() {
-        const flash = document.getElementById('flash');
-        if (flash) {
-          clearInterval(intervalId);
-          flash.classList.add('hidden');
         }
-      }
 
 
-    });
-  </script>
-
-
+      });
+    </script>
   </body>
 </html>

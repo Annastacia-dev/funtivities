@@ -1,0 +1,40 @@
+<div class="text-white min-h-screen bg-image bg-cover bg-fixed bg-center bg-no-repeat relative" style="background-image: url(<%= @background_image %> )">
+  <div class="min-h-screen bg-gradient-to-r from-black to-black/90 px-10 py-6 flex flex-col gap-4  justify-center items-center ">
+    <%= image_tag "logo.png", class: "" %>
+    <p class="text-center mt-1 text-4xl text-secondary font-bagel tracking-wide">
+      work in progress.
+    </p>
+    <p class="text-center mt-1">
+      Hey, you caught us working on something cool 😎. Check back soon.
+    </p>
+    <div class="w-1/4 h-1 bg-black rounded mt-5">
+      <div class="h-full bg-secondary rounded" id="wip-bar"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+document.addEventListener("turbo:load", () => {
+  const wipBar = document.getElementById('wip-bar');
+  const flash = document.getElementById('flash');
+  const progressBar = document.getElementById('wip-bar');
+
+  if (wipBar){
+    let loadingWip = 0;
+    const interval = setInterval(() => {
+      loadingWip += 5;
+      wipBar.style.width = `${loadingWip}%`;
+
+      if (loadingWip >= 100) {
+        clearInterval(interval);
+      }
+    }, 5000);
+
+  }
+});
+</script>
