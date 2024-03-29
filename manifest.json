@@ -1,0 +1,21 @@
+{
+  "name": "funtivities",
+  "short_name": "funtivities",
+  "description": "Find fun activities near you",
+  "icons": [
+    {
+      "src": "/logo-white.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo-white.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "transparent",
+  "theme_color": "#5a0a0a"
+}
