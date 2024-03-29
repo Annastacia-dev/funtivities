@@ -4,12 +4,12 @@
   "description": "Find fun activities near you",
   "icons": [
     {
-      "src": "/logo-white.png",
+      "src": "/images/logo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/logo-white.png",
+      "src": "/images/logo.png",
       "type": "image/png",
       "sizes": "512x512"
     }
