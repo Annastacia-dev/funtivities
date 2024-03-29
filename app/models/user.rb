@@ -48,7 +48,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :lockable, :timeoutable
 
   # --- associations ----
   belongs_to :events_host, optional: true
@@ -58,24 +59,68 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :phone_number, presence: true
   validates :email, presence: true, uniqueness: true
+  validates :terms_and_conditions_and_privacy_policy, acceptance: true
+  validate :one_account_admin_per_events_host
+  validate :one_superadmin
 
   # --- enums ----
-  enum role: { user: 0, events_host: 1, admin: 2 }
+  enum role: { user: 0, account_admin: 1, superadmin: 2 }
 
   # --- callbacks ----
-  before_create :skip_confirmation_if_admin_or_events_host
+  before_save :downcase_email
+  before_save :downcase_name
+  before_save :skip_confirmation_if_admin
 
   # --- instance methods ----
   def name
     "#{first_name} #{last_name}"
   end
 
+  def admin?
+    account_admin? || superadmin?
+  end
+
+  def superadmin?
+    role == 'superadmin'
+  end
+
+  def account_admin?
+    role == 'account_admin'
+  end
+
   # --- class methods ----
 
+  # --- private methods ----
   private
 
-  def skip_confirmation_if_admin_or_events_host
-    skip_confirmation! if admin? || events_host?
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  def downcase_name
+    self.first_name = first_name.downcase
+    self.last_name = last_name.downcase
+    self.middle_name = middle_name.downcase if middle_name.present?
+  end
+
+  def skip_confirmation_if_admin
+    return unless admin?
+
+    self.skip_confirmation!
+    self.skip_confirmation_notification!
+    self.confirmed_at = Time.zone.now
+  end
+
+  def one_account_admin_per_events_host
+    return unless account_admin?
+
+    errors.add(:role, 'cannot have more than one account admin per events host') if events_host.present? && events_host.users.where(role: 'account_admin').exists?
+  end
+
+  def one_superadmin
+    return unless superadmin?
+
+    errors.add(:role, 'cannot have more than one superadmin') if User.where(role: 'superadmin').exists?
   end
 
 end

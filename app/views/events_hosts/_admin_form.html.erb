@@ -1,0 +1,78 @@
+<%= form_for(@resource, as: :user, url: user_registration_path, method: :post, html: { class: "grid sm:grid-cols-2 grid-cols-1 gap-6 "  }) do |f| %>
+  <%= f.hidden_field :email, value: @events_host.email %>
+  <%= f.hidden_field :phone_number, value: @events_host.phone %>
+  <%= f.hidden_field :events_host_id, value: @events_host.id %>
+  <%= f.hidden_field :role, value: 'account_admin' %>
+
+  <div class='flex flex-col gap-6'>
+    <div class="flex flex-col gap-1">
+      <%= f.label :email, class: 'text-sm font-bold ml-1' %>
+      <%= f.text_field :email, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', value: @events_host.email, disabled: true %>
+    </div>
+
+    <div class="sm:grid sm:grid-cols-2 flex flex-col gap-6">
+      <div class="flex flex-col gap-1">
+        <%= f.label :first_name, class: 'text-sm font-bold ml-1' %>
+        <%= f.text_field :first_name, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "John"', required: true %>
+      </div>
+      <div class="flex flex-col gap-1">
+        <%= f.label :last_name, class: 'text-sm font-bold ml-1' %>
+        <%= f.text_field :last_name, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "Doe"', required: true %>
+      </div>
+      <div class="flex flex-col gap-1 relative">
+        <%= f.label :password, class: 'text-sm font-bold ml-1' %>
+        <%= f.password_field :password, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'Password', required: true, id: 'password-field' %>
+        <i class="fa fa-eye-slash absolute right-4 top-10 text-sm cursor-pointer" id="show-password"></i>
+        <i class="fa fa-eye absolute right-4 top-10 text-sm cursor-pointer" id="hide-password" style="display: none"></i>
+      </div>
+      <div class="flex flex-col gap-1 relative">
+        <%= f.label :password_confirmation, class: 'text-sm font-bold ml-1' %>
+        <%= f.password_field :password_confirmation, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'Confirm Password', required: true, id: 'password-confirmation-field' %>
+        <i class="fa fa-eye-slash absolute right-4 top-10 text-sm cursor-pointer" id="show-password-confirmation"></i>
+        <i class="fa fa-eye absolute right-4 top-10 text-sm cursor-pointer" id="hide-password-confirmation" style="display: none"></i>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 my-4">
+      <%= f.check_box :terms_and_conditions_and_privacy_policy, class: 'border-none bg-gray-500/20  h-8 w-8', required: true %>
+      <%= f.label :terms_and_conditions_and_privacy_policy, class: 'text-sm font-bold ml-1' %>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <%= f.submit 'create admin user', class: 'bg-secondary hover:bg-primary text-white px-6 py-3 rounded-lg font-bold cursor-pointer' %>
+    </div>
+
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+    const passwordField = document.getElementById("password-field");
+    const passwordConfirmationField = document.getElementById("password-confirmation-field");
+
+    const hidePassword = document.getElementById("hide-password");
+    const showPassword = document.getElementById("show-password");
+
+    const hidePasswordConfirmation = document.getElementById("hide-password-confirmation");
+    const showPasswordConfirmation = document.getElementById("show-password-confirmation");
+
+    showPassword.addEventListener("click", () => {
+      passwordField.type = "text";
+      showPassword.style.display = "none";
+        hidePassword.style.display = "block";
+    });
+
+    hidePassword.addEventListener("click", () => {
+      passwordField.type = "password";
+      showPassword.style.display = "block";
+      hidePassword.style.display = "none";
+    });
+
+    showPasswordConfirmation.addEventListener("click", () => {
+      passwordConfirmationField.type = "text";
+      showPasswordConfirmation.style.display = "none";
+      hidePasswordConfirmation.style.display = "block";
+    });
+
+});
+</script>

@@ -10,6 +10,10 @@
 </div>
 
 <div class="hidden relative" id="landing_page">
-  <%= render "landing_page" %>
+  <% if user_signed_in? %>
+    <%= render "home/dashboard" %>
+  <% else %>
+    <%= render "home/landing" %>
+  <% end %>
 </div>
 

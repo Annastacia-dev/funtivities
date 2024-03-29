@@ -29,6 +29,7 @@ class EventsHost < ApplicationRecord
   has_one_attached :cover_image
 
   # --- associations ---
+  has_many :users, dependent: :destroy
   has_many :events, dependent: :destroy
   has_one :location, as: :locatable, dependent: :destroy
 

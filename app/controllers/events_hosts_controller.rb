@@ -1,5 +1,5 @@
 class EventsHostsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :create_admin_user]
 
   def index
   end
@@ -45,6 +45,10 @@ class EventsHostsController < ApplicationController
     else
       redirect_to root_path, alert: "Invalid confirmation token."
     end
+  end
+
+  def create_admin_user
+    @resource = User.new
   end
 
   def update
