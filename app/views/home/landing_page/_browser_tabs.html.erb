@@ -25,7 +25,7 @@
   <% tabs.each do |tab| %>
     <div data-tabs-target="panels" class="p-4">
       <% if tab[:partial] %>
-        <%= render partial: tab[:partial] %>
+        <%= render "home/landing_page/#{tab[:partial]}" %>
       <% end %>
     </div>
   <% end %>

@@ -26,11 +26,11 @@
     </div>
     <div class="flex gap-4 justify-center relative sm:px-0 px-2">
       <input type="text" class="outline-none border border-white ring-primary px-4 py-2 focus:outline-none focus:border-none bg-transparent focus:ring-primary placeholder:text-white placeholder:text-sm" placeholder="Search for activities">
-      <i class="fas fa-search cursor-pointer hover:bg-black/10 px-2 py-1 absolute md:right-24 right-4 top-2 rounded"></i>
+      <i class="fas fa-search cursor-pointer hover:bg-black/10 px-2 py-1 absolute md:right-32 right-4 top-2 rounded"></i>
     </div>
 
     <div class="mt-6 md:absolute md:top-28  md:-left-5 md:w-[550px]">
-      <%= render 'browser_tabs', tabs: [
+      <%= render 'home/landing_page/browser_tabs', tabs: [
         { id: 'search_1', label: 'paint &...', partial: 'tab_content' },
         { id: 'search_2', label: 'barista cl...' },
         { id: 'search_3', label: 'wine t...'},

@@ -12,12 +12,8 @@
       </div>
 
       <ul class="flex items-center gap-4 p-2 font-bold sm:text-sm text-xs capitalize">
-        <li class="hover:underline cursor-pointer">
-          Login
-        </li>
-        <li class="hover:underline cursor-pointer text-secondary">
-          Sign Up
-        </li>
+        <%= link_to 'login', new_user_session_path, class: "hover:underline cursor-pointer" %>
+        <%= link_to 'sign up', new_user_registration_path, class:"hover:underline cursor-pointer text-secondary"%>
       </ul>
 
       <div class="sm:hidden block">
