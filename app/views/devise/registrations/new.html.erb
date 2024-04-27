@@ -1,29 +1,59 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="text-white min-h-screen bg-image bg-cover bg-fixed bg-center bg-no-repeat relative" style="background-image: url(<%= @background_image %> )">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="min-h-screen bg-gradient-to-r from-black to-black/90 px-10 py-6 ">
+
+  <%= render 'components/navigation' %>
+
+
+  <div class="flex flex-col gap-5 mt-16">
+    <h1 class="text-xl font-black font-montserrat">Sign up</h1>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "grid sm:grid-cols-2 grid-cols-1 gap-6 mt-5 "}) do |f| %>
+
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="sm:grid sm:grid-cols-2 flex flex-col gap-6">
+        <div class="flex flex-col gap-1">
+          <%= f.label :first_name, class: 'text-sm font-bold ml-1' %>
+          <%= f.text_field :first_name, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "John"', required: true %>
+        </div>
+        <div class="flex flex-col gap-1">
+          <%= f.label :last_name, class: 'text-sm font-bold ml-1' %>
+          <%= f.text_field :last_name, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "Doe"', required: true %>
+        </div>
+        <div class="flex flex-col gap-1">
+          <%= f.label :email, class: 'text-sm font-bold ml-1' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "johndoe@email.com"'  %>
+        </div>
+        <div class="flex flex-col gap-1">
+          <%= f.label :phone_number, class: 'text-sm font-bold ml-1' %>
+          <%= f.email_field :phone_number, autofocus: true, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "07xxxxxxxx"'  %>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <div class='flex gap-1'>
+            <%= f.label :password, class:'text-sm font-bold ml-1'  %>
+            <% if @minimum_password_length %>
+            <em class="text-sm">(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+          </div>
+          <%= f.password_field :password, autocomplete: "new-password", class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm' %>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <%= f.label :password_confirmation, class:'text-sm font-bold ml-1' %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm' %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up", class: 'bg-secondary hover:bg-primary text-white px-6 py-3 rounded-lg font-bold cursor-pointer' %>
+        </div>
+      </div>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <%= render "devise/shared/links" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
