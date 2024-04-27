@@ -44,35 +44,3 @@
 
   </div>
 <% end %>
-
-<script>
-  document.addEventListener("turbo:load", () => {
-    const passwordField = document.getElementById("password-field");
-    const passwordConfirmationField = document.getElementById("password-confirmation-field");
-
-    const hidePassword = document.getElementById("hide-password");
-    const showPassword = document.getElementById("show-password");
-
-    const hidePasswordConfirmation = document.getElementById("hide-password-confirmation");
-    const showPasswordConfirmation = document.getElementById("show-password-confirmation");
-
-    showPassword.addEventListener("click", () => {
-      passwordField.type = "text";
-      showPassword.style.display = "none";
-        hidePassword.style.display = "block";
-    });
-
-    hidePassword.addEventListener("click", () => {
-      passwordField.type = "password";
-      showPassword.style.display = "block";
-      hidePassword.style.display = "none";
-    });
-
-    showPasswordConfirmation.addEventListener("click", () => {
-      passwordConfirmationField.type = "text";
-      showPasswordConfirmation.style.display = "none";
-      hidePasswordConfirmation.style.display = "block";
-    });
-
-});
-</script>

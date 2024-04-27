@@ -14,9 +14,11 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm' %>
         </div>
 
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-1 relative">
           <%= f.label :password, class: 'text-sm font-bold ml-1' %>
-          <%= f.password_field :password, autocomplete: "current-password", class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm' %>
+          <%= f.password_field :password, autocomplete: "current-password", class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', id: 'password-field' %>
+          <i class="fa fa-eye-slash absolute right-4 top-10 text-sm cursor-pointer" id="show-password"></i>
+          <i class="fa fa-eye absolute right-4 top-10 text-sm cursor-pointer" id="hide-password" style="display: none"></i>
         </div>
 
         <% if devise_mapping.rememberable? %>
