@@ -11,64 +11,18 @@
         <% end %>
       </li>
 
-      <li class="mb-2">
-        <div class="relative">
-          <button class="px-4 py-2 hover:bg-gray-200 hover:text-gray-900 flex gap-2 items-center w-full" onclick="toggleDropdown('events', 'events-icon')">
-            <div class='flex gap-2 items-center'>
-              <i class="fa-solid fa-calendar"></i>
-              <span>Events</span>
-            </div>
-            <svg id="events-icon" class="h-4 w-4 ml-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-            </svg>
-          </button>
-
-          <div id="events" class="hidden mt-2 flex flex-col justify-center items-center gap-2 bg-gray-700">
-            <%= link_to events_path, class:"block px-4 py-2 text-white hover:bg-gray-600 w-40" do %>
-              <div class="flex gap-2 items-center">
-                <i class="fa-solid fa-calendar-days"></i>
-                <span> All Events </span>
-              </div>
-            <% end %>
-            <%= link_to new_event_path, class:"block px-4 py-2 text-white hover:bg-gray-600 w-40" do %>
-              <div class="flex gap-2 items-center">
-                <i class="fa-regular fa-calendar-plus"></i>
-                <span> New Event </span>
-              </div>
-            <% end %>
-          </div>
-        </div>
+      <li>
+        <%= render 'components/dropdown',
+          icon: "fa-solid fa-calendar",
+          title: 'Events',
+          menu_id: 'events',
+          icon_id: 'events-icon',
+          items: [
+            { path: events_path, title: 'All Events', icon: 'fa-solid fa-calendar-days'},
+            { path: new_event_path, title: 'New Event', icon: 'fa-regular fa-calendar-plus'}
+          ]
+        %>
       </li>
-
-      <li class="mb-2">
-        <div class="relative">
-          <button class="px-4 py-2 hover:bg-gray-200 hover:text-gray-900 flex gap-2 items-center w-full" onclick="toggleDropdown('users', 'users-icon')">
-            <div class='flex gap-2 items-center'>
-              <i class="fa-solid fa-users"></i>
-              <span>Users</span>
-            </div>
-            <svg id="users-icon" class="h-4 w-4 ml-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-            </svg>
-          </button>
-
-          <div id="users" class="hidden mt-2 flex flex-col justify-center items-center gap-2 bg-gray-700">
-            <%= link_to root_path, class:"block px-4 py-2 text-white hover:bg-gray-600 w-40" do %>
-              <div class="flex gap-2 items-center">
-                <i class="fa-solid fa-user"></i>
-                <span> All users </span>
-              </div>
-            <% end %>
-            <%= link_to root_path, class:"block px-4 py-2 text-white hover:bg-gray-600 w-40" do %>
-              <div class="flex gap-2 items-center">
-                <i class="fa-solid fa-user-plus"></i>
-                <span> New user </span>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </li>
-
 
       <li class="absolute bottom-10">
         <%= button_to destroy_user_session_path, method: :delete, class: "px-4 py-2 hover:bg-red-500 hover:text-white flex gap-2 items-center text-red-500 w-40 " do %>
@@ -80,17 +34,4 @@
   </div>
 </nav>
 
-<script>
-  function toggleDropdown(menuId, iconId) {
-    var dropdown = document.getElementById(menuId);
-    var icon = document.getElementById(iconId);
 
-    if (dropdown.classList.contains('hidden')) {
-      dropdown.classList.remove('hidden');
-      icon.classList.remove('rotate-180');
-    } else {
-      dropdown.classList.add('hidden');
-      icon.classList.add('rotate-180');
-    }
-  }
-</script>
