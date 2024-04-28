@@ -1,0 +1,39 @@
+<div class="relative">
+  <button class="px-4 py-2 hover:bg-gray-200 hover:text-gray-900 flex gap-2 items-center w-full" onclick="toggleDropdown('<%= menu_id %>', '<%= icon_id %>')">
+    <div class='flex gap-2 items-center'>
+      <i class="<%= icon %>"></i>
+      <span><%=title%></span>
+    </div>
+    <svg id="<%= icon_id %>" class="h-4 w-4 ml-2 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
+
+  <div id="<%= menu_id %>" class="hidden mt-2 flex flex-col justify-center items-center gap-2 bg-gray-700">
+    <% items.each do |item| %>
+      <%= link_to item[:path], class:"block px-4 py-2 text-white hover:bg-gray-600 w-40" do %>
+        <div class="flex gap-2 items-center">
+          <i class="<%= item[:icon] %>"></i>
+          <span><%= item[:title] %> </span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+<script>
+  function toggleDropdown(menuId, iconId) {
+    var dropdown = document.getElementById(menuId);
+    var icon = document.getElementById(iconId);
+
+    if (dropdown.classList.contains('hidden')) {
+      dropdown.classList.remove('hidden');
+      icon.classList.remove('rotate-180');
+    } else {
+      dropdown.classList.add('hidden');
+      icon.classList.add('rotate-180');
+    }
+  }
+</script>
