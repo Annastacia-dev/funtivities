@@ -6,15 +6,20 @@
 </li>
 
 <li>
+  <% event_items = [
+    { path: events_path, title: 'All Events', icon: 'fa-solid fa-calendar-days'}
+  ] %>
+
+  <% if current_user.admin? %>
+     <% event_items << { path: new_event_path, title: 'New Event', icon: 'fa-regular fa-calendar-plus'} %>
+   <% end %>
+
   <%= render 'components/dropdown',
     icon: "fa-solid fa-calendar",
     title: 'Events',
     menu_id: 'events',
     icon_id: 'events-icon',
-    items: [
-      { path: events_path, title: 'All Events', icon: 'fa-solid fa-calendar-days'},
-      { path: new_event_path, title: 'New Event', icon: 'fa-regular fa-calendar-plus'}
-    ]
+    items: event_items
   %>
 </li>
 
