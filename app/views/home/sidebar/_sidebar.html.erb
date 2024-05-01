@@ -1,16 +1,19 @@
-<nav class="bg-gray-900 w-40 h-screen text-white relative">
+<nav class="bg-gray-100 w-40 h-screen relative rounded-lg">
   <div class="flex flex-col justify-center gap-5">
     <div class="flex flex-col gap-1 px-4 py-3">
       <% if current_user.superadmin? %>
-        <div class="flex justify-center items-center">
-          <%= image_tag('logo.png', class: 'w-8 object-cover') %>
-        </div>
+          <%= image_tag('logo.png', class: 'w-10 object-cover') %>
       <% else %>
         <%= image_tag(@host.logo, class: 'w-10 h-10 object-cover') %>
       <% end %>
     </div>
-    <ul class="text-xs capitalize font-semibold flex flex-col gap-2">
+    <ul class="text-xs capitalize font-semibold flex flex-col gap-4">
       <%= render 'home/sidebar/shared_links' %>
+      <% if current_user.superadmin? %>
+       <%= render 'home/sidebar/super_links' %>
+      <% else %>
+        <%= render 'home/sidebar/host_links' %>
+      <% end %>
     </ul>
   </div>
 </nav>
