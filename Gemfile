@@ -34,8 +34,7 @@ gem "will_paginate"
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "byebug", platforms: %i[ mri mingw x64_mingw ]
-  gem 'guard-livereload', '~> 2.5', require: false
-  gem "rack-livereload"
+  gem "hotwire-livereload"
   gem 'rubocop-rails'
   gem 'dotenv-rails'
 end

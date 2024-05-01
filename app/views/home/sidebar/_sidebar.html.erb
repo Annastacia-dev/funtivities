@@ -1,0 +1,18 @@
+<nav class="bg-gray-900 w-40 h-screen text-white relative">
+  <div class="flex flex-col justify-center gap-5">
+    <div class="flex flex-col gap-1 px-4 py-3">
+      <% if current_user.superadmin? %>
+        <div class="flex justify-center items-center">
+          <%= image_tag('logo.png', class: 'w-8 object-cover') %>
+        </div>
+      <% else %>
+        <%= image_tag(@host.logo, class: 'w-10 h-10 object-cover') %>
+      <% end %>
+    </div>
+    <ul class="text-xs capitalize font-semibold flex flex-col gap-2">
+      <%= render 'home/sidebar/shared_links' %>
+    </ul>
+  </div>
+</nav>
+
+

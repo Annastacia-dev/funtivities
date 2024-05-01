@@ -49,13 +49,14 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script src="https://kit.fontawesome.com/bfa19ffe9b.js" crossorigin="anonymous"></script>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
   <body>
 
     <div>
       <% if user_signed_in? %>
-        <%= render "home/host_sidebar" %>
+        <%= render "home/sidebar/sidebar" %>
       <% end %>
     </div>
 
