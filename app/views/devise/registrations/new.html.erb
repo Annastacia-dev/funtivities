@@ -9,7 +9,7 @@
   <div class="flex flex-col gap-5 mt-10">
     <h1 class="text-xl font-black font-montserrat">Sign up</h1>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "grid sm:grid-cols-2 grid-cols-1 gap-6"}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "sm:w-1/2 gap-6"}) do |f| %>
 
       <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -28,7 +28,7 @@
         </div>
         <div class="flex flex-col gap-1">
           <%= f.label :phone_number, class: 'text-sm font-bold ml-1' %>
-          <%= f.email_field :phone_number, autofocus: true, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "07xxxxxxxx"', required: true   %>
+          <%= f.text_field :phone_number, autofocus: true, class: 'border-none bg-gray-500/20 text-white px-4 py-3 rounded-lg placeholder:text-sm', placeholder: 'e.g "07xxxxxxxx"', required: true   %>
         </div>
 
         <div class="flex flex-col gap-1 relative">
