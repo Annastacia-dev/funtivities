@@ -1,0 +1,51 @@
+<%= form_with(model: @event, html: { class: 'grid lg:grid-cols-2 lg:w-3/4 mb-10 flex flex-col gap-10'}) do |f| %>
+
+  <div class='flex flex-col gap-2'>
+    <%= f.label :title, class: 'text-sm font-semibold capitalize' do %>
+      title
+      <span class="text-red-500">*</span>
+    <% end %>
+    <%= f.text_field :title, class: 'bg-transparent border border-gray-300 rounded shadow-sm', required: true, placeholder: '' %>
+  </div>
+
+  <div class='flex flex-col gap-2'>
+    <%= f.label :category, class: 'text-sm font-semibold capitalize' do %>
+      category
+      <span class="text-red-500">*</span>
+    <% end %>
+    <%= f.select :category, Event.event_categories_options, {}, class: 'bg-transparent border border-gray-300 rounded shadow-sm capitalize', required: true %>
+  </div>
+
+  <div class='flex flex-col gap-2'>
+    <%= f.label :cover_image, class: 'text-sm font-semibold capitalize' do %>
+      cover image
+      <span class="text-red-500">*</span>
+    <% end %>
+    <%= f.file_field :cover_image, class: 'bg-transparent border border-gray-300 rounded shadow-sm capitalize', required: true %>
+  </div>
+
+  <div class="grid lg:grid-cols-2 lg:gap-5">
+    <div class='flex flex-col gap-2'>
+      <%= f.label :start_date, class: 'text-sm font-semibold capitalize' do %>
+        start date
+        <span class="text-red-500">*</span>
+      <% end %>
+      <%= f.datetime_field :start_date, class: 'bg-transparent border border-gray-300 rounded shadow-sm' %>
+    </div>
+    <div class='flex flex-col gap-2'>
+      <%= f.label :end_date, class: 'text-sm font-semibold capitalize' %>
+      <%= f.datetime_field :end_date, class: 'bg-transparent border border-gray-300 rounded shadow-sm' %>
+    </div>
+  </div>
+
+  <div class='flex flex-col gap-2 col-span-2'>
+    <%= f.label :description, class: 'text-sm font-semibold capitalize' do %>
+      details
+      <span class="text-red-500">*</span>
+    <% end %>
+    <%= f.text_area :description, class: 'bg-transparent border border-gray-300 rounded shadow-sm capitalize', required: true, rows: 6 %>
+  </div>
+
+  <%= f.submit class: 'bg-gray-900 text-white py-2 rounded cursor-pointer' %>
+
+<% end %>

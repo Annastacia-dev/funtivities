@@ -75,6 +75,9 @@ class Event < ApplicationRecord
 
 
   # --- instance methods ---
+  def self.event_categories_options
+    event_categories.map { |k, _v| [k.humanize, k] }
+  end
 
   # --- private methods ---
 

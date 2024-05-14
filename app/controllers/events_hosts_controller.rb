@@ -1,5 +1,5 @@
 class EventsHostsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :create_admin_user]
+  before_action :set_events_host, only: [:show, :edit, :update, :destroy, :create_admin_user]
 
   def index
   end
@@ -73,7 +73,7 @@ class EventsHostsController < ApplicationController
 
   private
 
-  def set_event
+  def set_events_host
     @events_host = EventsHost.friendly.find(params[:id])
   end
 

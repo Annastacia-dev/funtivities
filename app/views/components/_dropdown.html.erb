@@ -11,7 +11,7 @@
 
   <div id="<%= menu_id %>" class="hidden mt-2 flex flex-col justify-center items-center gap-2 bg-gray-200">
     <% items.each do |item| %>
-      <%= link_to item[:path], class:"block px-4 py-2 hover:bg-gray-300 w-40" do %>
+      <%= link_to item[:path], class:"block px-4 py-2 hover:bg-gray-300 w-36" do %>
         <div class="flex gap-2 items-center">
           <i class="<%= item[:icon] %>"></i>
           <span><%= item[:title] %> </span>
